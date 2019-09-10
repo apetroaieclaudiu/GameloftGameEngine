@@ -1,0 +1,7 @@
+﻿cl : Command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
+  Math.cpp
+d:\projects\gameloft\utilities\math.h(77): warning C4521: 'Vector3': multiple copy constructors specified
+d:\projects\gameloft\utilities\math.cpp(10): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
+d:\projects\gameloft\utilities\math.cpp(104): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
+d:\projects\gameloft\utilities\math.cpp(208): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
+  Utilities.vcxproj -> D:\Projects\Gameloft\\BIN-Nvidia\Utilities.lib
