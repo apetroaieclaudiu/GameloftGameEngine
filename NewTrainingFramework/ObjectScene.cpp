@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ObjectScene.h"
+#include "Terrain.h"
 
 ObjectScene::ObjectScene()
 {
@@ -27,7 +28,22 @@ void ObjectScene::Draw(Matrix mr)
 
 	for (i = 0; i < texture.size(); i++)
 	{
+		glActiveTexture(GL_TEXTURE0 + i);
 		glBindTexture(GL_TEXTURE_2D, texture[i]->textureId);
+
+		if (shader->textureUniform[i] != -1)
+		{
+			glUniform1i(shader->textureUniform[i], i);
+		}
+	}
+
+	if (shader->heightUniform != -1)
+	{
+		GLfloat height[3];
+		height[0] = ((Terrain*)this)->heights.x;
+		height[1] = ((Terrain*)this)->heights.y;
+		height[2] = ((Terrain*)this)->heights.z;
+		glUniform3fv(shader->heightUniform, 1, (GLfloat*)height);
 	}
 
 	if (shader->positionAttribute != -1)
@@ -42,23 +58,14 @@ void ObjectScene::Draw(Matrix mr)
 		glVertexAttribPointer(shader->uvAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(sizeof(Vector3) * 4));
 	}
 
-	if (type == "normal")
+	if (shader->uvBlendAttribute != -1)
 	{
-		if (shader->textureUniform[0] != -1)
-		{
-			glUniform1i(shader->textureUniform[0], 0);
-		}
+		glEnableVertexAttribArray(shader->uvBlendAttribute);
+		glVertexAttribPointer(shader->uvBlendAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(sizeof(Vector3) * 4 + sizeof(Vector2)));
 	}
-	else
-	{
-		for (int i = 0; i < texture.size(); i++)
-		{
-			if (shader->textureUniform[i] != -1)
-			{
-				glUniform1i(shader->textureUniform[i], 0);
-			}
-		}
-	}
+
+
+	
 
 
 	Matrix placement, rotX, rotY, rotZ, scaleMatrix, transMatrix;

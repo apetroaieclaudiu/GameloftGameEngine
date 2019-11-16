@@ -143,6 +143,16 @@ void SceneManager::Init()
 			currentNode = pNode->first_node("offset");
 			terrain->offsetY = atof(currentNode->value());
 
+			currentNode = pNode->first_node("heights");
+			xml_node<> *currentNodeVector = currentNode->first_node();
+			terrain->heights.x = atof(currentNodeVector->value());
+
+			currentNodeVector = currentNodeVector->next_sibling();
+			terrain->heights.y = atof(currentNodeVector->value());
+
+			currentNodeVector = currentNodeVector->next_sibling();
+			terrain->heights.z = atof(currentNodeVector->value());
+
 			objects.insert(pair<int, Terrain*>(terrain->id, terrain));
 
 			object = (ObjectScene*)terrain;
@@ -271,6 +281,7 @@ void SceneManager::Draw(ESContext *esContext, Matrix mr, Vector3 position)
 		it->Draw(mr);
 	}*/
 	for (map<int, ObjectScene*>::iterator it = objects.begin(); it != objects.end(); it++) {
+
 		it->second->Draw(mr);
 	}
 	/*for (std::vector<Terrain>::iterator it = terrains.begin(); it != terrains.end(); ++it)

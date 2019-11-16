@@ -506,13 +506,13 @@ void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 	case('w'): 
 	case('W'):
 		{
-			camera.moveOy(1);
+			camera.moveOz(-1);
 			break;
 		}
 	case('s'):
 	case('S'):
 		{
-			camera.moveOy(-1);
+			camera.moveOz(1);
 			break;
 		}
 	case('a'):
@@ -532,14 +532,14 @@ void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 	case('q'):
 	case('Q'):
 	{
-		camera.moveOz(1);
+		camera.moveOy(-1);
 		break;
 	}
 
 	case('e'):
 	case('E'):
 	{
-		camera.moveOz(-1);
+		camera.moveOy(1);
 		break;
 	}
 

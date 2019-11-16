@@ -45,8 +45,8 @@ void Terrain::GenerateModel(Vector3 position)
 			tgt.z = 0;
 			uv.x = i;
 			uv.y = j;
-			uvBlend.x = i / nrCells;
-			uvBlend.y = j / nrCells;
+			uvBlend.x = (float)i / (float)(nrCells);
+			uvBlend.y = (float)j / (float)(nrCells);
 			vertices.push_back(Vertex(pos, norm, binorm, tgt, uv, uvBlend));
 
 			a[i][j] = k++;
@@ -100,7 +100,7 @@ void Terrain::Update(Vector3 position)
 			for (i = 0; i < vertices.size(); i++)
 			{
 				vertices[i].pos.x += dimCells;
-				vertices[i].uvBlend.y += 1 / nrCells;
+				vertices[i].uvBlend.y += 1 / (float)nrCells;
 			}
 
 			center.x += dimCells;
@@ -110,7 +110,7 @@ void Terrain::Update(Vector3 position)
 			for (i = 0; i < vertices.size(); i++)
 			{
 				vertices[i].pos.x -= dimCells;
-				vertices[i].uvBlend.y -= 1 / nrCells;
+				vertices[i].uvBlend.y -= 1 / (float)nrCells;
 			}
 
 			center.x -= dimCells;
@@ -124,7 +124,7 @@ void Terrain::Update(Vector3 position)
 			for (i = 0; i < vertices.size(); i++)
 			{
 				vertices[i].pos.z += dimCells;
-				vertices[i].uvBlend.x += 1 / nrCells;
+				vertices[i].uvBlend.x -= 1 / (float)nrCells;
 			}
 
 			center.z += dimCells;
@@ -134,7 +134,7 @@ void Terrain::Update(Vector3 position)
 			for (i = 0; i < vertices.size(); i++)
 			{
 				vertices[i].pos.z -= dimCells;
-				vertices[i].uvBlend.x -= 1 / nrCells;
+				vertices[i].uvBlend.x += 1 / (float)nrCells;
 			}
 
 			center.z -= dimCells;

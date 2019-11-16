@@ -8,6 +8,7 @@ public:
 	int nrCells;
 	float dimCells, offsetY;
 	Vector3 center;
+	Vector3 heights;
 	vector<Vertex> vertices;
 	vector<unsigned int> indices;
 

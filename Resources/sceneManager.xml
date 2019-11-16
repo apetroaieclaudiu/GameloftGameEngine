@@ -252,8 +252,13 @@
 				<y>1.0</y>
 				<z>1.0</z>
 			</scale>
+			<heights>
+				<r>30</r>
+				<g>2</g>
+				<b>-1</b>
+			</heights>
 			<number>40</number>
-			<dimension>100</dimension>
+			<dimension>10</dimension>
 			<offset>-200</offset>
 			<lights>
 				<light>1</light>

@@ -1,6 +1,10 @@
 ﻿cl : Command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
-  ObjectScene.cpp
+  Terrain.cpp
 d:\projects\gameloft\utilities\math.h(77): warning C4521: 'Vector3': multiple copy constructors specified
-d:\projects\gameloft\newtrainingframework\objectscene.cpp(28): warning C4018: '<': signed/unsigned mismatch
-d:\projects\gameloft\newtrainingframework\objectscene.cpp(54): warning C4018: '<': signed/unsigned mismatch
+d:\projects\gameloft\newtrainingframework\terrain.cpp(46): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+d:\projects\gameloft\newtrainingframework\terrain.cpp(47): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+d:\projects\gameloft\newtrainingframework\terrain.cpp(100): warning C4018: '<': signed/unsigned mismatch
+d:\projects\gameloft\newtrainingframework\terrain.cpp(110): warning C4018: '<': signed/unsigned mismatch
+d:\projects\gameloft\newtrainingframework\terrain.cpp(124): warning C4018: '<': signed/unsigned mismatch
+d:\projects\gameloft\newtrainingframework\terrain.cpp(134): warning C4018: '<': signed/unsigned mismatch
   NewTrainingFramework.vcxproj -> D:\Projects\Gameloft\\BIN-Nvidia\NewTrainingFramework.exe
