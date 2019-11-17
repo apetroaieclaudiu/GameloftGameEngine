@@ -158,6 +158,16 @@ void SceneManager::Init()
 			object = (ObjectScene*)terrain;
 
 		}
+		else if (type == "skybox")
+		{
+			SkyBox* skybox = new SkyBox();
+
+			skybox->id = atoi(pAttr->value());
+
+			objects.insert(pair<int, SkyBox*>(skybox->id, skybox));
+
+			object = (ObjectScene*)skybox;
+		}
 		else if (type == "normal")
 		{
 			object = new ObjectScene();
@@ -241,6 +251,29 @@ void SceneManager::Init()
 		currentNodeVector = currentNodeVector->next_sibling();
 		object->scale.z = atof(currentNodeVector->value());
 
+		if (pNode->first_node("followingCamera"))
+		{
+			currentNode = pNode->first_node("followingCamera");
+
+			if (currentNode->first_node("ox"))
+			{
+				object->followingCamera.x = 1;
+				object->offset.x = object->position.x;
+			}
+
+			if (currentNode->first_node("oy"))
+			{
+				object->followingCamera.y = 1;
+				object->offset.y = object->position.y;
+			}
+
+			if (currentNode->first_node("oz"))
+			{
+				object->followingCamera.z = 1;
+				object->offset.z = object->position.z;
+			}
+		}
+
 		
 		/*if (object->type == "terrain")
 		{
@@ -300,5 +333,6 @@ void SceneManager::Update(Vector3 position)
 		{
 			((Terrain*)(it->second))->Update(position);
 		}
+		it->second->Update(position);
 	}
 }

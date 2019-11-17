@@ -10,6 +10,9 @@
 		<model id="5">
 			<path>Resources/Models/bila.nfg</path>
 		</model>
+		<model id="6">
+			<path>Resources/Models/skyBox.nfg</path>
+		</model>
 		<!-- si aici se adauga toate modelele -->
 	</models>
 	<shaders>
@@ -20,6 +23,10 @@
 		<shader id="3">
 			<vs>Resources/Shaders/terrainShader.vs</vs>
 			<fs>Resources/Shaders/terrainShader.fs</fs>
+		</shader>
+		<shader id="4">
+			<vs>Resources/Shaders/skyBoxShader.vs</vs>
+			<fs>Resources/Shaders/skyBoxShader.fs</fs>
 		</shader>
 		<!-- si aici se adauga toate shaderele -->
 	</shaders>
@@ -58,7 +65,14 @@
 			<mag_filter>LINEAR</mag_filter>
 			<wrap_s>REPEAT</wrap_s>
 			<wrap_t>REPEAT</wrap_t>
-		</texture>		
+		</texture>
+		<texture id="17" type="cube">
+			<path>Resources/Textures/envMap.tga</path>
+			<min_filter>LINEAR</min_filter>
+			<mag_filter>LINEAR</mag_filter>
+			<wrap_s>CLAMP_TO_EDGE</wrap_s>
+			<wrap_t>CLAMP_TO_EDGE</wrap_t>
+		</texture>
 		<texture id="5" type="2d">
 			<path>Resources/Textures/bus.tga</path>
 			<min_filter>LINEAR</min_filter>

@@ -62,14 +62,6 @@
 				<y>1.0</y>
 				<z>1.0</z>
 			</scale>
-			<followingCamera>
-				<cameras>
-					<camera>1</camera>
-				</cameras>
-				<ox/>
-				<oy/>
-				<oz/>
-			</followingCamera>
 			<trajectory type="linear" iteration="infinite" direction="alternate">
 			<!-- startPoint e chiar Pos -->
 				<endPoint>
@@ -93,7 +85,7 @@
 				<texture id="5"/>
 			</textures>
 			<position><!-- translatia -->
-				<x>1000</x>
+				<x>20</x>
 				<y>0</y>
 				<z>0</z>
 			</position>
@@ -152,14 +144,6 @@
 				<y>1.0</y>
 				<z>1.0</z>
 			</scale>
-			<followingCamera>
-				<cameras>
-					<camera>1</camera>
-				</cameras>
-				<ox/>
-				<oy/>
-				<oz/>
-			</followingCamera>
 			<trajectory type="linear" iteration="infinite" direction="alternate">
 			<!-- startPoint e chiar Pos -->
 				<endPoint>
@@ -197,14 +181,6 @@
 				<y>5.0</y>
 				<z>5.0</z>
 			</scale>
-			<followingCamera>
-				<cameras>
-					<camera>1</camera>
-				</cameras>
-				<ox/>
-				<oy/>
-				<oz/>
-			</followingCamera>
 			<trajectory type="linear" iteration="infinite" direction="alternate">
 			<!-- startPoint e chiar Pos -->
 				<endPoint>
@@ -223,7 +199,7 @@
 			<shader>3</shader>
 			<type>terrain</type>
 			<wired/>
-			<blend>false</blend>
+			<blend>true</blend>
 			<name>Teren</name>
 			<color>
 				<r>1.0</r>
@@ -260,6 +236,45 @@
 			<number>40</number>
 			<dimension>10</dimension>
 			<offset>-200</offset>
+			<lights>
+				<light>1</light>
+			</lights>
+		</object>
+		<object id="9">
+			<model>6</model>
+			<shader>4</shader>
+			<type>skybox</type>
+			<wired/>
+			<blend>false</blend>
+			<name>SkyBox</name>
+			<color>
+				<r>1.0</r>
+				<g>1.0</g>
+				<b>1.0</b>
+			</color>
+			<textures>
+				<texture id="17"/>
+				<!--adaugati texturile-->
+			</textures>
+			<position>
+				<x>0</x>
+				<y>0</y>
+				<z>0</z>
+			</position>
+			<rotation>
+				<x>0.0</x>
+				<y>0.0</y>
+				<z>0.0</z>
+			</rotation>
+			<scale>
+				<x>200.0</x>
+				<y>200.0</y>
+				<z>200.0</z>
+			</scale>
+			<followingCamera>
+				<ox/>
+				<oz/>
+			</followingCamera>
 			<lights>
 				<light>1</light>
 			</lights>

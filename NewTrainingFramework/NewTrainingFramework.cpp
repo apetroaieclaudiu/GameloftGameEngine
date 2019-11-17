@@ -339,6 +339,15 @@ int Init ( ESContext *esContext )
 			terrain->shader = resourceManager->LoadShader(terrain->shaderId);
 			//it->second = (ObjectScene*)it->second;
 		}
+		else if (it->second->type == "skybox")
+		{
+			SkyBox* skybox = (SkyBox*)it->second;
+			it->second->model = resourceManager->LoadModel(it->second->modelId);
+			TextureManager* texture = resourceManager->LoadTexture(it->second->textureIds[0]);
+			it->second->texture.push_back(texture);
+			skybox->shader = resourceManager->LoadShader(skybox->shaderId);
+			//it->second = (ObjectScene*)it->second;
+		}
 		
 	}
 	/*

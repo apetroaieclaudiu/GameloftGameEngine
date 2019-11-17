@@ -29,7 +29,16 @@ void ObjectScene::Draw(Matrix mr)
 	for (i = 0; i < texture.size(); i++)
 	{
 		glActiveTexture(GL_TEXTURE0 + i);
-		glBindTexture(GL_TEXTURE_2D, texture[i]->textureId);
+
+		if (texture[i]->tr->type == "2d")
+		{
+			glBindTexture(GL_TEXTURE_2D, texture[i]->textureId);
+		}
+		else if (texture[i]->tr->type == "cube")
+		{
+			glBindTexture(GL_TEXTURE_CUBE_MAP, texture[i]->textureId);
+		}
+		
 
 		if (shader->textureUniform[i] != -1)
 		{
@@ -87,11 +96,43 @@ void ObjectScene::Draw(Matrix mr)
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindTexture(GL_TEXTURE_2D, 0);
+
+	if (texture[0]->tr->type == "2d")
+	{
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
+	else if (texture[0]->tr->type == "cube")
+	{
+		glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
+	}
 
 }
 
-void ObjectScene::Update()
+void ObjectScene::Update(Vector3 cameraPosition)
 {
+	bool follow = true;
 
+	if (followingCamera.x == 0 && followingCamera.y == 0 && followingCamera.z == 0)
+	{
+		follow = false;
+	}
+
+	if (follow = true)
+	{
+		if (followingCamera.x == 1)
+		{
+			position.x = cameraPosition.x + offset.x;
+		}
+
+		if (followingCamera.y == 1)
+		{
+			position.y = cameraPosition.y + offset.y;
+		}
+
+		if (followingCamera.z == 1)
+		{
+			position.z = cameraPosition.z + offset.z;
+		}
+		
+	}
 }
