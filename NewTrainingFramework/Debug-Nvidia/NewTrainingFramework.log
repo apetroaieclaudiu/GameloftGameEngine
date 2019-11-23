@@ -1,58 +1,8 @@
 ﻿cl : Command line warning D9035: option 'Gm' has been deprecated and will be removed in a future release
-  SceneManager.cpp
+  ShaderManager.cpp
 d:\projects\gameloft\utilities\math.h(77): warning C4521: 'Vector3': multiple copy constructors specified
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(56): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(59): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(62): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(73): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(76): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(79): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(83): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(86): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(89): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(93): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(96): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(99): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(102): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(105): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(108): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(111): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(114): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(141): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(144): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(148): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(151): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(154): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(205): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(208): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(211): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(226): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(229): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(232): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(236): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(239): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(242): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(246): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(249): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\scenemanager.cpp(252): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
   ObjectScene.cpp
 d:\projects\gameloft\utilities\math.h(77): warning C4521: 'Vector3': multiple copy constructors specified
-d:\projects\gameloft\newtrainingframework\objectscene.cpp(29): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  Compiling...
-  Terrain.cpp
-d:\projects\gameloft\utilities\math.h(77): warning C4521: 'Vector3': multiple copy constructors specified
-d:\projects\gameloft\newtrainingframework\terrain.cpp(46): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\terrain.cpp(47): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-d:\projects\gameloft\newtrainingframework\terrain.cpp(100): warning C4018: '<': signed/unsigned mismatch
-d:\projects\gameloft\newtrainingframework\terrain.cpp(110): warning C4018: '<': signed/unsigned mismatch
-d:\projects\gameloft\newtrainingframework\terrain.cpp(124): warning C4018: '<': signed/unsigned mismatch
-d:\projects\gameloft\newtrainingframework\terrain.cpp(134): warning C4018: '<': signed/unsigned mismatch
-  SkyBox.cpp
-d:\projects\gameloft\utilities\math.h(77): warning C4521: 'Vector3': multiple copy constructors specified
-  NewTrainingFramework.cpp
-d:\projects\gameloft\utilities\math.h(77): warning C4521: 'Vector3': multiple copy constructors specified
-d:\projects\gameloft\newtrainingframework\newtrainingframework.cpp(334): warning C4018: '<': signed/unsigned mismatch
-d:\projects\gameloft\newtrainingframework\newtrainingframework.cpp(505): warning C4305: '-=': truncation from 'double' to 'GLfloat'
+d:\projects\gameloft\newtrainingframework\objectscene.cpp(30): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   NewTrainingFramework.vcxproj -> D:\Projects\Gameloft\\BIN-Nvidia\NewTrainingFramework.exe

@@ -15,7 +15,7 @@ void TextureManager::Load()
 {
 	int width, height, bpp;
 	char* arrayPixel;
-	GLuint format;
+	GLuint type, format;
 
 	tr->path = "../" + tr->path;
 	//tr->path = "D:\\Projects\\Gameloft\\Resources\\Textures\\Croco.tga";
@@ -25,47 +25,49 @@ void TextureManager::Load()
 
 	if (tr->type == "2d")
 	{
-		glBindTexture(GL_TEXTURE_2D, textureId);
+		type = GL_TEXTURE_2D;
 	}
 	else if (tr->type == "cube")
 	{
-		glBindTexture(GL_TEXTURE_CUBE_MAP, textureId);
+		type = GL_TEXTURE_CUBE_MAP;
 	}
+
+	glBindTexture(type, textureId);
 
 	if (tr->minFilter == "LINEAR")
 	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(type, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	}
 	else if (tr->minFilter == "NEAREST")
 	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(type, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	}
 
 	if (tr->magFilter == "LINEAR")
 	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(type, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	}
 	else if (tr->magFilter == "NEAREST")
 	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(type, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	}
 
 	if (tr->wrapS == "CLAMP_TO_EDGE")
 	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(type, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	}
 	else if (tr->wrapS == "REPEAT")
 	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(type, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	}
 
 	if (tr->wrapT == "CLAMP_TO_EDGE")
 	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		glTexParameteri(type, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	}
 	else if (tr->wrapT == "REPEAT")
 	{
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(type, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	}
 
 	glEnable(GL_DEPTH_TEST);
@@ -83,8 +85,7 @@ void TextureManager::Load()
 
 	if (tr->type == "2d")
 	{		
-		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, arrayPixel);
-		glBindTexture(GL_TEXTURE_2D, 0);
+		glTexImage2D(type, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, arrayPixel);
 	}
 	else if (tr->type == "cube")
 	{
@@ -151,11 +152,10 @@ void TextureManager::Load()
 		}
 
 		glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, format, width / 4, height / 3, 0, format, GL_UNSIGNED_BYTE, (GLvoid*)buff);
-
-		glBindTexture(GL_TEXTURE_CUBE_MAP, 0);		
 		
 	}
 	
+	glBindTexture(type, 0);
 
 	
 }

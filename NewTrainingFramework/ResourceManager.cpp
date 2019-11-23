@@ -116,7 +116,7 @@ ModelManager* ResourceManager::LoadModel(int id)
 		}
 	}
 
-	ModelManager* model = (ModelManager*)malloc(sizeof(ModelManager));
+	ModelManager* model = new ModelManager();
 
 	for (i = 0; i < models.size(); i++)
 	{
@@ -145,7 +145,7 @@ TextureManager* ResourceManager::LoadTexture(int id)
 		}
 	}
 
-	TextureManager* texture = (TextureManager*)malloc(sizeof(TextureManager));
+	TextureManager* texture = new TextureManager();
 
 	for (i = 0; i < textures.size(); i++)
 	{
@@ -174,7 +174,7 @@ ShaderManager* ResourceManager::LoadShader(int id)
 		}
 	}
 
-	ShaderManager* shader = (ShaderManager*)malloc(sizeof(ShaderManager));
+	ShaderManager* shader = new ShaderManager();
 
 	for (i = 0; i < shaders.size(); i++)
 	{

@@ -299,6 +299,24 @@ void SceneManager::Init()
 		}*/
 
 	}
+	/*
+	pNode = pRoot->first_node("fog");
+
+	xml_node<> *currentNode = pNode->first_node("lowRadius");
+	fogLowRadius = atof(currentNode->value());
+
+	currentNode = pNode->first_node("highRadius");
+	fogHighRadius = atof(currentNode->value());
+
+	currentNode = pNode->first_node("color");
+	xml_node<> *currentNodeVector = currentNode->first_node();
+	fogColor.x = atof(currentNodeVector->value());
+
+	currentNodeVector = currentNodeVector->next_sibling();
+	fogColor.y = atof(currentNodeVector->value());
+
+	currentNodeVector = currentNodeVector->next_sibling();
+	fogColor.z = atof(currentNodeVector->value());*/
 
 	activeCamera = atoi(pRoot->first_node("activeCamera")->value());
 
@@ -315,7 +333,7 @@ void SceneManager::Draw(ESContext *esContext, Matrix mr, Vector3 position)
 	}*/
 	for (map<int, ObjectScene*>::iterator it = objects.begin(); it != objects.end(); it++) {
 
-		it->second->Draw(mr);
+		it->second->Draw(mr, position);
 	}
 	/*for (std::vector<Terrain>::iterator it = terrains.begin(); it != terrains.end(); ++it)
 	{

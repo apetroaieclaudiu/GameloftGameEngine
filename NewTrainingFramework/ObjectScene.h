@@ -24,7 +24,7 @@ public:
 	bool depthTest;
 
 	void GenerateModel();
-	void Draw(Matrix);
+	void Draw(Matrix, Vector3);
 	virtual void Update(Vector3);
 
 	ObjectScene();

@@ -13,7 +13,13 @@ public:
 	GLint uvAttribute;
 	GLint uvBlendAttribute;
 	GLint matrixUniform;
+	GLint Uniform;
 	GLint heightUniform;
+	GLint lowRadiusUniform;
+	GLint highRadiusUniform;
+	GLint cameraPositionUniform;
+	GLint scenePositionUniform;
+	GLint fogColorUniform;
 	GLint textureUniform[5];
 
 	int Load();

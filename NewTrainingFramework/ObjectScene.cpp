@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ObjectScene.h"
 #include "Terrain.h"
+#include "SceneManager.h"
 
 ObjectScene::ObjectScene()
 {
@@ -16,7 +17,7 @@ void ObjectScene::GenerateModel()
 
 }
 
-void ObjectScene::Draw(Matrix mr)
+void ObjectScene::Draw(Matrix mr, Vector3 camPos)
 {
 
 	int i;
@@ -52,7 +53,37 @@ void ObjectScene::Draw(Matrix mr)
 		height[0] = ((Terrain*)this)->heights.x;
 		height[1] = ((Terrain*)this)->heights.y;
 		height[2] = ((Terrain*)this)->heights.z;
-		glUniform3fv(shader->heightUniform, 1, (GLfloat*)height);
+		glUniform3f(shader->heightUniform, height[0], height[1], height[2]);
+	}
+	
+	if (shader->lowRadiusUniform != -1)
+	{
+		GLfloat lowRadius = SceneManager::getInstance()->fogLowRadius;
+		glUniform1f(shader->lowRadiusUniform, lowRadius);
+	}
+
+	if (shader->highRadiusUniform != -1)
+	{
+		GLfloat highRadius = SceneManager::getInstance()->fogHighRadius;
+		glUniform1f(shader->lowRadiusUniform, highRadius);
+	}
+	
+	if (shader->fogColorUniform != -1)
+	{
+		GLfloat fogColor[3];
+		fogColor[0] = SceneManager::getInstance()->fogColor.x;
+		fogColor[1] = SceneManager::getInstance()->fogColor.y;
+		fogColor[2] = SceneManager::getInstance()->fogColor.z;
+		glUniform3f(shader->fogColorUniform, fogColor[0], fogColor[1], fogColor[2]);
+	}
+
+	if (shader->cameraPositionUniform != -1)
+	{
+		GLfloat cameraPosition[3];
+		cameraPosition[0] = camPos.x;
+		cameraPosition[1] = camPos.y;
+		cameraPosition[2] = camPos.z;
+		glUniform3f(shader->cameraPositionUniform, cameraPosition[0], cameraPosition[1], cameraPosition[2]);
 	}
 
 	if (shader->positionAttribute != -1)
@@ -85,7 +116,9 @@ void ObjectScene::Draw(Matrix mr)
 	transMatrix.SetTranslation(position.x, position.y, position.z);
 	scaleMatrix.SetScale(scale.x, scale.y, scale.z);
 
+
 	placement = scaleMatrix * rotX * rotY * rotZ * transMatrix * mr;
+
 
 	if (shader->matrixUniform != -1)
 	{

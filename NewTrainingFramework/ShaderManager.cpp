@@ -39,6 +39,10 @@ int ShaderManager::Load()
 	colorAttribute = glGetAttribLocation(program, "a_color");
 	matrixUniform = glGetUniformLocation(program, "u_rot");
 	heightUniform = glGetUniformLocation(program, "height");
+	lowRadiusUniform = glGetUniformLocation(program, "u_r");
+	highRadiusUniform = glGetUniformLocation(program, "u_R");
+	fogColorUniform = glGetUniformLocation(program, "u_fogColor");
+	cameraPositionUniform = glGetUniformLocation(program, "u_camPos");
 	uvAttribute = glGetAttribLocation(program, "a_uv");
 	uvBlendAttribute = glGetAttribLocation(program, "a_uv_blend");
 	textureUniform[0] = glGetUniformLocation(program, "u_texture");

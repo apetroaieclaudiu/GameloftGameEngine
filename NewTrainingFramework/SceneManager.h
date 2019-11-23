@@ -21,6 +21,8 @@ public:
 	vector<CameraScene> cameras;
 	map<int, ObjectScene*> objects;
 	vector<Terrain> terrains;
+	float fogLowRadius, fogHighRadius;
+	Vector3 fogColor;
 	int activeCamera;
 
 

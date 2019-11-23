@@ -85,9 +85,9 @@
 				<texture id="5"/>
 			</textures>
 			<position><!-- translatia -->
-				<x>20</x>
+				<x>100</x>
 				<y>0</y>
-				<z>0</z>
+				<z>1000</z>
 			</position>
 			<rotation>
 				<x>0.5</x>
@@ -229,12 +229,12 @@
 				<z>1.0</z>
 			</scale>
 			<heights>
-				<r>30</r>
+				<r>20</r>
 				<g>2</g>
-				<b>-1</b>
+				<b>-100</b>
 			</heights>
 			<number>40</number>
-			<dimension>10</dimension>
+			<dimension>100</dimension>
 			<offset>-200</offset>
 			<lights>
 				<light>1</light>
@@ -258,18 +258,18 @@
 			</textures>
 			<position>
 				<x>0</x>
-				<y>0</y>
+				<y>100</y>
 				<z>0</z>
 			</position>
 			<rotation>
 				<x>0.0</x>
 				<y>0.0</y>
-				<z>0.0</z>
+				<z>135.0</z>
 			</rotation>
 			<scale>
-				<x>200.0</x>
-				<y>200.0</y>
-				<z>200.0</z>
+				<x>2000.0</x>
+				<y>2000.0</y>
+				<z>2000.0</z>
 			</scale>
 			<followingCamera>
 				<ox/>
@@ -281,6 +281,16 @@
 		</object>
 	</objects>
 	
+	<fog>
+		<lowRadius>50</lowRadius>
+		<highRadius>100</highRadius>
+		<color>
+			<r>0.0</r>
+			<g>1.0</g>
+			<b>0.0</b>
+		</color>
+	</fog>
+			
 
 	<ambientalLight>
 		<color>
