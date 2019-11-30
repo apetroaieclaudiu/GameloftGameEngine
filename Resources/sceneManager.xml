@@ -279,6 +279,44 @@
 				<light>1</light>
 			</lights>
 		</object>
+		<object id="10">
+			<model>7</model>
+			<shader>5</shader>
+			<type>fire</type>
+			<wired/>
+			<blend>true</blend>
+			<name>Fire</name>
+			<color>
+				<r>1.0</r>
+				<g>1.0</g>
+				<b>1.0</b>
+			</color>
+			<textures>
+				<texture id="20"/>
+				<texture id="18"/>
+				<texture id="19"/>
+				<!--adaugati texturile-->
+			</textures>
+			<position>
+				<x>50</x>
+				<y>0</y>
+				<z>50</z>
+			</position>
+			<rotation>
+				<x>0.0</x>
+				<y>0.0</y>
+				<z>0.0</z>
+			</rotation>
+			<scale>
+				<x>10.0</x>
+				<y>10.0</y>
+				<z>10.0</z>
+			</scale>
+			<dispMax>0.9</dispMax>
+			<lights>
+				<light>1</light>
+			</lights>
+		</object>
 	</objects>
 	
 	<fog>

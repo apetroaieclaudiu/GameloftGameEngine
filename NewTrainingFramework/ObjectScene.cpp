@@ -67,6 +67,18 @@ void ObjectScene::Draw(Matrix mr, Vector3 camPos)
 		GLfloat highRadius = SceneManager::getInstance()->fogHighRadius;
 		glUniform1f(shader->highRadiusUniform, highRadius);
 	}
+
+	if (shader->timeUniform != -1)
+	{
+		GLfloat time = ((Fire*)this)->time;
+		glUniform1f(shader->timeUniform, time);
+	}
+
+	if (shader->dispMaxUniform != -1)
+	{
+		GLfloat dispMax = ((Fire*)this)->dispMax;
+		glUniform1f(shader->dispMaxUniform, dispMax);
+	}
 	
 	if (shader->fogColorUniform != -1)
 	{

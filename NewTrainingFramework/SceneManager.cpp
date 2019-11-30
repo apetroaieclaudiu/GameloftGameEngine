@@ -168,6 +168,19 @@ void SceneManager::Init()
 
 			object = (ObjectScene*)skybox;
 		}
+		else if (type == "fire")
+		{
+			Fire* fire = new Fire();
+
+			fire->id = atoi(pAttr->value());
+
+			currentNode = pNode->first_node("dispMax");
+			fire->dispMax = atof(currentNode->value());
+
+			objects.insert(pair<int, Fire*>(fire->id, fire));
+
+			object = (ObjectScene*)fire;
+		}
 		else if (type == "normal")
 		{
 			object = new ObjectScene();
@@ -350,6 +363,10 @@ void SceneManager::Update(Vector3 position)
 		if (it->second->type == "terrain")
 		{
 			((Terrain*)(it->second))->Update(position);
+		}
+		else if (it->second->type == "fire")
+		{
+			((Fire*)(it->second))->Update();
 		}
 		it->second->Update(position);
 	}

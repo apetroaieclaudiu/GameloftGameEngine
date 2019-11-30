@@ -141,7 +141,6 @@ void Terrain::Update(Vector3 position)
 		}
 	}
 
-	glGenBuffers(1, &model->verticesId);
 	glBindBuffer(GL_ARRAY_BUFFER, model->verticesId);
 	glBufferData(GL_ARRAY_BUFFER, model->nrVertices * sizeof(Vertex), vertices.data(), GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);

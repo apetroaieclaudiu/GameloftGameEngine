@@ -165,6 +165,7 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraScene.cpp" />
+    <ClCompile Include="Fire.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="ModelResources.cpp" />
@@ -190,6 +191,7 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraScene.h" />
+    <ClInclude Include="Fire.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelManager.h" />

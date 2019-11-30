@@ -29,7 +29,7 @@ Camera camera;
 
 int nrIndices, width, height, bpp;
 char* arrayPixel;
-float time;
+//float time;
 //const float timeLimit;
 ResourceManager* resourceManager;
 SceneManager* sceneManager;
@@ -319,8 +319,29 @@ int Init ( ESContext *esContext )
 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	for (map<int, ObjectScene*>::iterator it = sceneManager->objects.begin(); it != sceneManager->objects.end(); it++) {
-		if (it->second->type == "normal")
+		
+		if (it->second->type == "terrain") {
+			Terrain* terrain = (Terrain*)it->second;
+			terrain->GenerateModel(camera.getPosition());
+		}
+		else {
+			it->second->model = resourceManager->LoadModel(it->second->modelId);
+		}
+
+		for (int i = 0; i < it->second->textureIds.size(); i++)
+		{
+			TextureManager* texture = resourceManager->LoadTexture(it->second->textureIds[i]);
+			it->second->texture.push_back(texture);
+		}
+
+		it->second->shader = resourceManager->LoadShader(it->second->shaderId);
+		
+
+		/*if (it->second->type == "normal")
 		{
 			it->second->model = resourceManager->LoadModel(it->second->modelId);
 			TextureManager* texture = resourceManager->LoadTexture(it->second->textureIds[0]);
@@ -346,8 +367,7 @@ int Init ( ESContext *esContext )
 			TextureManager* texture = resourceManager->LoadTexture(it->second->textureIds[0]);
 			it->second->texture.push_back(texture);
 			skybox->shader = resourceManager->LoadShader(skybox->shaderId);
-			//it->second = (ObjectScene*)it->second;
-		}
+		}*/
 		
 	}
 	/*

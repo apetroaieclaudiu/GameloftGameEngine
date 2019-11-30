@@ -4,6 +4,7 @@
 #include "ObjectScene.h"
 #include "Terrain.h"
 #include "SkyBox.h"
+#include "Fire.h"
 #include <vector>
 #include <map>
 #include <string>

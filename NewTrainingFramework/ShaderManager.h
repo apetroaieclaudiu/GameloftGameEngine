@@ -19,6 +19,8 @@ public:
 	GLint highRadiusUniform;
 	GLint cameraPositionUniform;
 	GLint scenePositionUniform;
+	GLint timeUniform;
+	GLint dispMaxUniform;
 	GLint fogColorUniform;
 	GLint textureUniform[5];
 
