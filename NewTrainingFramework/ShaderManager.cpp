@@ -39,6 +39,7 @@ int ShaderManager::Load()
 	colorAttribute = glGetAttribLocation(program, "a_color");
 	matrixUniform = glGetUniformLocation(program, "u_rot");
 	heightUniform = glGetUniformLocation(program, "height");
+	scenePositionUniform = glGetUniformLocation(program, "u_scenePos");
 	lowRadiusUniform = glGetUniformLocation(program, "u_r");
 	highRadiusUniform = glGetUniformLocation(program, "u_R");
 	fogColorUniform = glGetUniformLocation(program, "u_fogColor");

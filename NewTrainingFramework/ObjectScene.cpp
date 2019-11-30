@@ -65,7 +65,7 @@ void ObjectScene::Draw(Matrix mr, Vector3 camPos)
 	if (shader->highRadiusUniform != -1)
 	{
 		GLfloat highRadius = SceneManager::getInstance()->fogHighRadius;
-		glUniform1f(shader->lowRadiusUniform, highRadius);
+		glUniform1f(shader->highRadiusUniform, highRadius);
 	}
 	
 	if (shader->fogColorUniform != -1)
@@ -108,7 +108,7 @@ void ObjectScene::Draw(Matrix mr, Vector3 camPos)
 	
 
 
-	Matrix placement, rotX, rotY, rotZ, scaleMatrix, transMatrix;
+	Matrix placement, scenePosition, rotX, rotY, rotZ, scaleMatrix, transMatrix;
 
 	rotX.SetRotationX(rotation.x);
 	rotY.SetRotationY(rotation.y);
@@ -116,6 +116,13 @@ void ObjectScene::Draw(Matrix mr, Vector3 camPos)
 	transMatrix.SetTranslation(position.x, position.y, position.z);
 	scaleMatrix.SetScale(scale.x, scale.y, scale.z);
 
+
+	scenePosition = scaleMatrix * rotX * rotY * rotZ * transMatrix;
+
+	if (shader->scenePositionUniform != -1)
+	{
+		glUniformMatrix4fv(shader->scenePositionUniform, 1, GL_FALSE, (GLfloat*)scenePosition.m);
+	}
 
 	placement = scaleMatrix * rotX * rotY * rotZ * transMatrix * mr;
 

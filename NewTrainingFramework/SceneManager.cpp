@@ -299,7 +299,7 @@ void SceneManager::Init()
 		}*/
 
 	}
-	/*
+	
 	pNode = pRoot->first_node("fog");
 
 	xml_node<> *currentNode = pNode->first_node("lowRadius");
@@ -316,7 +316,7 @@ void SceneManager::Init()
 	fogColor.y = atof(currentNodeVector->value());
 
 	currentNodeVector = currentNodeVector->next_sibling();
-	fogColor.z = atof(currentNodeVector->value());*/
+	fogColor.z = atof(currentNodeVector->value());
 
 	activeCamera = atoi(pRoot->first_node("activeCamera")->value());
 

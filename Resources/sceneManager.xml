@@ -282,12 +282,12 @@
 	</objects>
 	
 	<fog>
-		<lowRadius>50</lowRadius>
-		<highRadius>100</highRadius>
+		<lowRadius>500</lowRadius>
+		<highRadius>1000</highRadius>
 		<color>
-			<r>0.0</r>
-			<g>1.0</g>
-			<b>0.0</b>
+			<r>0.23</r>
+			<g>0.25</g>
+			<b>0.33</b>
 		</color>
 	</fog>
 			
