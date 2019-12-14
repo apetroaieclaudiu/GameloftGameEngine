@@ -190,6 +190,7 @@ void SceneManager::Init()
 		}
 
 		object->type = type;
+		object->trajectoryType = "none";
 
 
 		currentNode = pNode->first_node("model");
@@ -285,6 +286,93 @@ void SceneManager::Init()
 				object->followingCamera.z = 1;
 				object->offset.z = object->position.z;
 			}
+		}
+
+		object->iterationCount = 0;
+
+		if (pNode->first_node("trajectory"))
+		{
+			currentNode = pNode->first_node("trajectory");
+
+			if ((string)(currentNode->first_attribute("iteration-count")->value()) != "infinite")
+			{
+				object->iterationCount = atoi(currentNode->first_attribute("iteration-count")->value());
+			}
+			else
+			{
+				object->iterationCount = -1;
+			}
+
+			if (currentNode->first_attribute("direction")->value())
+			{
+				object->direction = currentNode->first_attribute("direction")->value();
+			}
+
+			object->trajectoryType = currentNode->first_attribute("type")->value();
+			object->speed = atof(currentNode->first_attribute("speed")->value());
+			object->forward = true;
+			object->currentPoint = 0;
+			object->deltaTime = 0.1f;
+
+			if (object->trajectoryType != "circle")
+			{
+				currentNode = currentNode->first_node("points");
+
+				for (xml_node<> *currentNodeVector = currentNode->first_node("point"); currentNodeVector; currentNodeVector = currentNodeVector->next_sibling("point"))
+				{
+					Vector3 point;
+					xml_node<> *currentNodeVectorCoord = currentNodeVector->first_node();
+					point.x = atof(currentNodeVectorCoord->value());
+
+					currentNodeVectorCoord = currentNodeVectorCoord->next_sibling();
+					point.y = atof(currentNodeVectorCoord->value());
+
+					currentNodeVectorCoord = currentNodeVectorCoord->next_sibling();
+					point.z = atof(currentNodeVectorCoord->value());
+
+					object->points.push_back(point);
+				}
+			}
+			else
+			{
+				Vector3 center;
+
+				currentNodeVector = currentNode->first_node("center");
+
+				currentNodeVector = currentNodeVector->first_node();
+				center.x = atof(currentNodeVector->value());
+
+				currentNodeVector = currentNodeVector->next_sibling();
+				center.y = atof(currentNodeVector->value());
+
+				currentNodeVector = currentNodeVector->next_sibling();
+				center.z = atof(currentNodeVector->value());
+
+				object->points.push_back(center);
+
+				currentNodeVector = currentNode->first_node("radius");
+				object->radius = atof(currentNodeVector->value());
+
+				Vector3 vector;
+
+				currentNode = currentNode->first_node("rotationPlane");
+
+				currentNodeVector = currentNode->first_node();
+				vector.x = atof(currentNodeVector->value());
+
+				currentNodeVector = currentNodeVector->next_sibling();
+				vector.y = atof(currentNodeVector->value());
+
+				currentNodeVector = currentNodeVector->next_sibling();
+				vector.z = atof(currentNodeVector->value());
+
+				object->points.push_back(vector);
+
+			}
+			
+
+			object->lastPosition = object->points[0];
+
 		}
 
 		
