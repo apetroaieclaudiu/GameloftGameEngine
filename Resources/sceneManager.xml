@@ -62,7 +62,7 @@
 				<y>1.0</y>
 				<z>1.0</z>
 			</scale>
-			<trajectory type="line_strip" iteration-count="infinite" direction="alternate" speed="4">
+			<trajectory type="line_strip" iteration-count="infinite" direction="alternate" speed="40">
 			<!-- startPoint e chiar Pos -->
 				<points>
 					<point>
@@ -133,29 +133,29 @@
 			</textures>
 			<position><!-- translatia -->
 				<x>-1000</x>
-				<y>27</y>
+				<y>300</y>
 				<z>21.22</z>
 			</position>
 			<rotation>
-				<x>90</x>
-				<y>90</y>
-				<z>1</z>
+				<x>0</x>
+				<y>0</y>
+				<z>0</z>
 			</rotation>
 			<scale>
 				<x>1.0</x>
 				<y>1.0</y>
 				<z>1.0</z>
 			</scale>
-			<trajectory type="circle" iteration-count="infinite" direction="alternate" speed="4">
+			<trajectory type="circle" iteration-count="infinite" direction="alternate" speed="1">
 			<!-- startPoint e chiar Pos -->
 				<center>
 					<x>-1000</x>
 					<y>27</y>
 					<z>21.22</z>
 				</center>
-				<radius>10</radius>
+				<radius>300</radius>
 				<rotationPlane>
-					<x>0.5</x>
+					<x>90</x>
 					<y>0</y>
 					<z>3</z>
 				</rotationPlane>

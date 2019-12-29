@@ -516,7 +516,7 @@ void Draw ( ESContext *esContext )
 void Update ( ESContext *esContext, float deltaTime )
 {
 	camera.updateDeltaTime(deltaTime);
-	sceneManager->Update(camera.getPosition());
+	sceneManager->Update(camera.getPosition(), deltaTime);
 
 	alpha += pas;
 	//pas *= (-1);

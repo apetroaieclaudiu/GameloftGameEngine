@@ -120,7 +120,7 @@ void ObjectScene::Draw(Matrix mr, Vector3 camPos)
 	
 
 
-	Matrix placement, scenePosition, rotX, rotY, rotZ, scaleMatrix, transMatrix;
+	Matrix scenePosition, rotX, rotY, rotZ, scaleMatrix, transMatrix;
 
 	rotX.SetRotationX(rotation.x);
 	rotY.SetRotationY(rotation.y);
@@ -160,7 +160,7 @@ void ObjectScene::Draw(Matrix mr, Vector3 camPos)
 
 }
 
-void ObjectScene::Update(Vector3 cameraPosition)
+void ObjectScene::Update(Vector3 cameraPosition, float deltaTime)
 {
 	bool follow = true;
 
@@ -208,7 +208,7 @@ void ObjectScene::Update(Vector3 cameraPosition)
 
 			Vector3 move = distance.Normalize() * speed * deltaTime;
 			position += move;
-			//rotation = Vector3(distance.Normalize().x * 360, distance.Normalize().z * 360, 0);
+			//rotation = Vector3(distance.Normalize().x, distance.Normalize().y, 0);
 
 			float pointDistance = (points[nextPoint].x - points[currentPoint].x) * (points[nextPoint].x - points[currentPoint].x);
 			pointDistance += (points[nextPoint].y - points[currentPoint].y) * (points[nextPoint].y - points[currentPoint].y);
@@ -241,6 +241,37 @@ void ObjectScene::Update(Vector3 cameraPosition)
 					}
 				}
 			}
+		}
+		else if (trajectoryType == "circle")
+		{
+			
+			alpha += speed * deltaTime;
+			rotation.y = -alpha - 135;
+			position.x = radius * cos(alpha) + offsetPosition.x;
+			position.z = radius * sin(alpha) + offsetPosition.z;
+			
+			/*
+			alpha += speed * deltaTime;
+			float xAxis = 90.0f / points[1].x;
+			beta += speed / xAxis * deltaTime * sign;
+
+			if (beta > 3.14f / xAxis) {
+				sign = -1;
+			}
+			if (beta < 0) {
+				sign = 1;
+			}
+
+			printf("%f ", beta);
+
+			
+
+			
+			rotation.y = -alpha - 135;
+			position.x = radius * cos(alpha) + offsetPosition.x;
+			position.z = radius * sin(alpha) + offsetPosition.z;
+			position.y = radius * cos(beta) + offsetPosition.y;
+			*/
 		}
 	}
 }

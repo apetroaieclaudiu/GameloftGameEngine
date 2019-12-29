@@ -22,6 +22,7 @@ public:
 	vector<TextureManager*> texture;
 	ShaderManager* shader;
 	bool depthTest;
+	Matrix placement;
 	string trajectoryType;
 	string direction;
 	bool forward;
@@ -31,11 +32,15 @@ public:
 	int currentPoint;
 	Vector3 lastPosition;
 	float radius;
-	float deltaTime;
+	//float deltaTime;
+	float alpha;
+	float beta = 0;
+	int sign = 1;
+	Vector3 offsetPosition;
 
 	void GenerateModel();
 	void Draw(Matrix, Vector3);
-	virtual void Update(Vector3);
+	virtual void Update(Vector3, float);
 
 	ObjectScene();
 	~ObjectScene();

@@ -312,7 +312,7 @@ void SceneManager::Init()
 			object->speed = atof(currentNode->first_attribute("speed")->value());
 			object->forward = true;
 			object->currentPoint = 0;
-			object->deltaTime = 0.1f;
+			//object->deltaTime = 0.1f;
 
 			if (object->trajectoryType != "circle")
 			{
@@ -367,6 +367,10 @@ void SceneManager::Init()
 				vector.z = atof(currentNodeVector->value());
 
 				object->points.push_back(vector);
+
+				object->offsetPosition = object->position;
+
+				object->alpha = 0;
 
 			}
 			
@@ -445,7 +449,7 @@ void SceneManager::Draw(ESContext *esContext, Matrix mr, Vector3 position)
 	//eglSwapBuffers(esContext->eglDisplay, esContext->eglSurface);
 }
 
-void SceneManager::Update(Vector3 position)
+void SceneManager::Update(Vector3 position, float deltaTime)
 {
 	for (map<int, ObjectScene*>::iterator it = objects.begin(); it != objects.end(); it++) {
 		if (it->second->type == "terrain")
@@ -456,6 +460,6 @@ void SceneManager::Update(Vector3 position)
 		{
 			((Fire*)(it->second))->Update();
 		}
-		it->second->Update(position);
+		it->second->Update(position, deltaTime);
 	}
 }
