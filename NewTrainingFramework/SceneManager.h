@@ -1,6 +1,7 @@
 #pragma once
 #include "../rapidxml-1.13/rapidxml_utils.hpp"
 #include "CameraScene.h"
+#include "Camera.h"
 #include "ObjectScene.h"
 #include "Terrain.h"
 #include "SkyBox.h"
@@ -19,7 +20,8 @@ public:
 	~SceneManager();
 
 	Vector3 bgColor;
-	vector<CameraScene> cameras;
+	//vector<CameraScene> cameras;
+	vector<Camera*> cameras;
 	map<int, ObjectScene*> objects;
 	vector<Terrain> terrains;
 	float fogLowRadius, fogHighRadius;
@@ -32,6 +34,8 @@ public:
 	void Update(Vector3, float);
 	static SceneManager* getInstance();
 	void metodaInstanta();//o metoda oarecare, nestatica
+	Camera* getActiveCamera();
+	void setActiveCamera(int);
 	void freeResources();//eliberarea zonelor de memorie alocate dinamic - se poate realiza si in destructor
 
 };

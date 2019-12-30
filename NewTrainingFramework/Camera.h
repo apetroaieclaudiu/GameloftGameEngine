@@ -6,9 +6,11 @@ class Camera
 	Vector3 position, target, up, xAxis, yAxis, zAxis;
 	GLfloat moveSpeed, rotateSpeed, Near, Far, fov, deltaTime;
 	Matrix viewMatrix, worldMatrix, perspectiveMatrix;
+	bool active;
 public:
 	Camera();
 	Camera(Vector3, Vector3);
+	Camera(Vector3, Vector3, Vector3, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
 	~Camera();
 
 	void moveOx(GLfloat);
@@ -51,5 +53,7 @@ public:
 	void setDeltaTime(GLfloat deltaTime) { this->deltaTime = deltaTime; }
 	void setViewMatrix(Matrix viewMatrix) { this->viewMatrix = viewMatrix; }
 	void setMatrix();
+	bool getActive();
+	void setActive(bool active);
 };
 

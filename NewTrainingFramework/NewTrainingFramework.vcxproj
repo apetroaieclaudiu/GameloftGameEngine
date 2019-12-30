@@ -187,6 +187,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TextureResources.cpp" />
+    <ClCompile Include="Trajectory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -209,6 +210,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TextureResources.h" />
+    <ClInclude Include="Trajectory.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>

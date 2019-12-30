@@ -25,6 +25,7 @@ GLuint vboId, verticesId, indicesId, textureId;
 Shaders myShaders;
 GLfloat alpha = 0, pas = 0.01f;
 Camera camera;
+Camera camera2;
 
 
 int nrIndices, width, height, bpp;
@@ -446,12 +447,13 @@ void Draw ( ESContext *esContext )
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glUseProgram(myShaders.program);
-
-
+	
 	Matrix mr;
-	mr = camera.getViewMatrix() * camera.getPerspectiveMatrix();
+	//mr = camera.getViewMatrix() * camera.getPerspectiveMatrix();
+	mr = sceneManager->getActiveCamera()->getViewMatrix() * sceneManager->getActiveCamera()->getPerspectiveMatrix();
 
-	sceneManager->Draw(esContext, mr, camera.getPosition());
+	//sceneManager->Draw(esContext, mr, camera.getPosition());
+	sceneManager->Draw(esContext, mr, sceneManager->getActiveCamera()->getPosition());
 
 
 	if (myShaders.matrixUniform != -1)
@@ -515,8 +517,11 @@ void Draw ( ESContext *esContext )
 
 void Update ( ESContext *esContext, float deltaTime )
 {
-	camera.updateDeltaTime(deltaTime);
-	sceneManager->Update(camera.getPosition(), deltaTime);
+	//camera.updateDeltaTime(deltaTime);
+	//sceneManager->Update(camera.getPosition(), deltaTime);
+
+	sceneManager->getActiveCamera()->updateDeltaTime(deltaTime);
+	sceneManager->Update(sceneManager->getActiveCamera()->getPosition(), deltaTime);
 
 	alpha += pas;
 	//pas *= (-1);
@@ -526,82 +531,133 @@ void Update ( ESContext *esContext, float deltaTime )
 	}
 }
 
+char prevKey = -1;
+bool resetKey = false;
+
 void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
-{
-	
+{	
 
 	switch (key)
 	{
 	case('w'): 
 	case('W'):
 		{
-			camera.moveOz(-1);
+			sceneManager->getActiveCamera()->moveOz(-1);
 			break;
 		}
 	case('s'):
 	case('S'):
 		{
-			camera.moveOz(1);
+			sceneManager->getActiveCamera()->moveOz(1);
 			break;
 		}
 	case('a'):
 	case('A'):
 	{
-		camera.moveOx(1);
+		sceneManager->getActiveCamera()->moveOx(1);
 		break;
 	}
 
 	case('d'):
 	case('D'):
 	{
-		camera.moveOx(-1);
+		sceneManager->getActiveCamera()->moveOx(-1);
 		break;
 	}
 
 	case('q'):
 	case('Q'):
 	{
-		camera.moveOy(-1);
+		sceneManager->getActiveCamera()->moveOy(-1);
 		break;
 	}
 
 	case('e'):
 	case('E'):
 	{
-		camera.moveOy(1);
+		sceneManager->getActiveCamera()->moveOy(1);
 		break;
 	}
 
 	case(VK_RIGHT):
 	{
-		camera.rotateOy(1);
+		sceneManager->getActiveCamera()->rotateOy(1);
 		break;
 	}
 	case(VK_LEFT):
 	{
-		camera.rotateOy(-1);
+		sceneManager->getActiveCamera()->rotateOy(-1);
 		break;
 	}
 	case(VK_UP):
 	{
-		camera.rotateOx(-1);
+		sceneManager->getActiveCamera()->rotateOx(-1);
 		break;
 	}
 	case(VK_DOWN):
 	{
-		camera.rotateOx(1);
+		sceneManager->getActiveCamera()->rotateOx(1);
 		break;
 	}
 	case('l'):
 	case('L'):
 	{
-		camera.rotateOz(-1);
+		sceneManager->getActiveCamera()->rotateOz(-1);
 		break;
 	}
 	case('p'):
 	case('P'):
 	{
-		camera.rotateOz(1);
+		sceneManager->getActiveCamera()->rotateOz(1);
+		break;
+	}
+	case('z'):
+	case('Z'):
+	{
+		if (prevKey == false)
+		{
+			prevKey = true;
+			break;
+		}
+		prevKey = false;
+		sceneManager->setActiveCamera(-2);
+		break;
+	}
+	case('x'):
+	case('X'):
+	{
+		if (prevKey == false)
+		{
+			prevKey = true;
+			break;
+		}
+		prevKey = false;
+		sceneManager->setActiveCamera(-1);
+		break;
+	}
+	case('1'):
+	{
+		sceneManager->setActiveCamera(0);
+		break;
+	}
+	case('2'):
+	{
+		sceneManager->setActiveCamera(1);
+		break;
+	}
+	case('3'):
+	{
+		sceneManager->setActiveCamera(2);
+		break;
+	}
+	case('4'):
+	{
+		sceneManager->setActiveCamera(3);
+		break;
+	}
+	case('5'):
+	{
+		sceneManager->setActiveCamera(4);
 		break;
 	}
 

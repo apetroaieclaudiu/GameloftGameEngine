@@ -33,12 +33,6 @@ Camera::Camera()
 
 }
 
-
-void Camera::updateDeltaTime(float deltaTime)
-{
-	this->deltaTime = deltaTime;
-}
-
 Camera::Camera(Vector3 position, Vector3 target)
 {
 	this->position = position;
@@ -50,6 +44,36 @@ Camera::Camera(Vector3 position, Vector3 target)
 	fov = 0;
 
 }
+
+Camera::Camera(Vector3 position, Vector3 target, Vector3 up, GLfloat translationSpeed, GLfloat rotationSpeed, GLfloat Fov, GLfloat Near, GLfloat Far)
+{
+	this->position = position;
+	this->target = target;
+	this->up = up;
+	xAxis = Vector3((GLfloat)1, (GLfloat)0, (GLfloat)0);
+	yAxis = Vector3((GLfloat)0, (GLfloat)1, (GLfloat)0);
+	zAxis = Vector3((GLfloat)0, (GLfloat)0, (GLfloat)1);
+	viewMatrix.SetIdentity();
+	worldMatrix.SetIdentity();
+	moveSpeed = translationSpeed;
+	rotateSpeed = rotationSpeed;
+	this->Near = Near;
+	this->Far = Far;
+	fov = Fov;
+	deltaTime = 0.5f;
+	active = false;
+
+	perspectiveMatrix.SetPerspective(fov, 16.0f / 9.0f, Near, Far);
+
+	setMatrix();
+
+}
+
+void Camera::updateDeltaTime(float deltaTime)
+{
+	this->deltaTime = deltaTime;
+}
+
 
 void Camera::setAxis()
 {
@@ -158,7 +182,15 @@ void Camera::setMatrix()
 
 }
 
+bool Camera::getActive()
+{
+	return active;
+}
 
+void Camera::setActive(bool active)
+{
+	this->active = active;
+}
 
 Camera::~Camera()
 {

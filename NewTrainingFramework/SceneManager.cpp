@@ -113,8 +113,16 @@ void SceneManager::Init()
 		currentNode = pNode->first_node("far");
 		camera.Far = atof(currentNode->value());
 
-		cameras.push_back(camera);
+		cameras.push_back(new Camera(camera.position, camera.target, camera.up, camera.translationSpeed, camera.rotationSpeed, camera.Fov, camera.Near, camera.Far));
 
+	}
+
+	if (pRoot->first_node("activeCamera"))
+	{
+		xml_node<> *pNode = pRoot->first_node("activeCamera");
+		int activeCamera = atoi(pNode->value());
+
+		cameras[activeCamera]->setActive(true);
 	}
 
 	for (xml_node<> *pNode = pRoot->first_node("objects")->first_node("object"); pNode; pNode = pNode->next_sibling("object"))
@@ -190,7 +198,8 @@ void SceneManager::Init()
 		}
 
 		object->type = type;
-		object->trajectoryType = "none";
+		//object->trajectoryType = "none";
+		object->trajectory = NULL;
 
 
 		currentNode = pNode->first_node("model");
@@ -288,33 +297,36 @@ void SceneManager::Init()
 			}
 		}
 
-		object->iterationCount = 0;
+		
 
 		if (pNode->first_node("trajectory"))
 		{
+			object->trajectory = new Trajectory();
+			object->trajectory->iterationCount = 0;
+
 			currentNode = pNode->first_node("trajectory");
 
 			if ((string)(currentNode->first_attribute("iteration-count")->value()) != "infinite")
 			{
-				object->iterationCount = atoi(currentNode->first_attribute("iteration-count")->value());
+				object->trajectory->iterationCount = atoi(currentNode->first_attribute("iteration-count")->value());
 			}
 			else
 			{
-				object->iterationCount = -1;
+				object->trajectory->iterationCount = -1;
 			}
 
 			if (currentNode->first_attribute("direction")->value())
 			{
-				object->direction = currentNode->first_attribute("direction")->value();
+				object->trajectory->direction = currentNode->first_attribute("direction")->value();
 			}
 
-			object->trajectoryType = currentNode->first_attribute("type")->value();
-			object->speed = atof(currentNode->first_attribute("speed")->value());
-			object->forward = true;
-			object->currentPoint = 0;
+			object->trajectory->trajectoryType = currentNode->first_attribute("type")->value();
+			object->trajectory->speed = atof(currentNode->first_attribute("speed")->value());
+			object->trajectory->forward = true;
+			object->trajectory->currentPoint = 0;
 			//object->deltaTime = 0.1f;
 
-			if (object->trajectoryType != "circle")
+			if (object->trajectory->trajectoryType != "circle")
 			{
 				currentNode = currentNode->first_node("points");
 
@@ -330,7 +342,7 @@ void SceneManager::Init()
 					currentNodeVectorCoord = currentNodeVectorCoord->next_sibling();
 					point.z = atof(currentNodeVectorCoord->value());
 
-					object->points.push_back(point);
+					object->trajectory->points.push_back(point);
 				}
 			}
 			else
@@ -348,10 +360,10 @@ void SceneManager::Init()
 				currentNodeVector = currentNodeVector->next_sibling();
 				center.z = atof(currentNodeVector->value());
 
-				object->points.push_back(center);
+				object->trajectory->points.push_back(center);
 
 				currentNodeVector = currentNode->first_node("radius");
-				object->radius = atof(currentNodeVector->value());
+				object->trajectory->radius = atof(currentNodeVector->value());
 
 				Vector3 vector;
 
@@ -366,16 +378,16 @@ void SceneManager::Init()
 				currentNodeVector = currentNodeVector->next_sibling();
 				vector.z = atof(currentNodeVector->value());
 
-				object->points.push_back(vector);
+				object->trajectory->points.push_back(vector);
 
-				object->offsetPosition = object->position;
+				object->trajectory->offsetPosition = object->position;
 
-				object->alpha = 0;
+				object->trajectory->alpha = 0;
 
 			}
 			
 
-			object->lastPosition = object->points[0];
+			object->trajectory->lastPosition = object->trajectory->points[0];
 
 		}
 
@@ -462,4 +474,63 @@ void SceneManager::Update(Vector3 position, float deltaTime)
 		}
 		it->second->Update(position, deltaTime);
 	}
+}
+
+Camera* SceneManager::getActiveCamera()
+{
+	for (int i = 0; i < cameras.size(); i++)
+	{
+		if (cameras[i]->getActive() == true)
+		{
+			return cameras[i];
+		}
+	}
+}
+
+void SceneManager::setActiveCamera(int camera)
+{
+	if (camera > (int)cameras.size())
+	{
+		return;
+	}
+
+	for (int i = 0; i < cameras.size(); i++)
+	{
+		if (cameras[i]->getActive() == true)
+		{
+			cameras[i]->setActive(false);
+
+			if (camera == -2)
+			{
+				if (i == 0)
+				{
+					cameras[cameras.size() - 1]->setActive(true);
+				}
+				else
+				{
+					cameras[i - 1]->setActive(true);
+				}
+			}
+			else if (camera == -1)
+			{
+				if (i == cameras.size() - 1)
+				{
+					cameras[0]->setActive(true);
+				}
+				else
+				{
+					cameras[i + 1]->setActive(true);
+				}
+			}
+			else
+			{
+				cameras[camera]->setActive(true);
+			}
+
+			return;
+		}
+		
+	}
+
+	//cameras[camera]->setActive(true);
 }

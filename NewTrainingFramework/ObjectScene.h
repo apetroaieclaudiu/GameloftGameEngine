@@ -4,6 +4,7 @@
 #include "ModelManager.h"
 #include "TextureManager.h"
 #include "ShaderManager.h"
+#include "Trajectory.h"
 #include "../Utilities/utilities.h"
 
 
@@ -23,20 +24,8 @@ public:
 	ShaderManager* shader;
 	bool depthTest;
 	Matrix placement;
-	string trajectoryType;
-	string direction;
-	bool forward;
-	int iterationCount;
-	float speed;
-	vector<Vector3> points;
-	int currentPoint;
-	Vector3 lastPosition;
-	float radius;
-	//float deltaTime;
-	float alpha;
-	float beta = 0;
-	int sign = 1;
-	Vector3 offsetPosition;
+	Trajectory* trajectory;
+	
 
 	void GenerateModel();
 	void Draw(Matrix, Vector3);
