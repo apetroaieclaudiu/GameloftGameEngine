@@ -533,6 +533,7 @@ void Update ( ESContext *esContext, float deltaTime )
 
 char prevKey = -1;
 bool resetKey = false;
+short int stepCounter = 18;
 
 void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 {	
@@ -543,18 +544,51 @@ void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 	case('W'):
 		{
 			sceneManager->getActiveCamera()->moveOz(-1);
+
+			if (stepCounter == 18)
+			{
+				stepCounter = 0;
+				resourceManager->PlaySound(resourceManager->LoadSound(1)->soundId);
+			}
+			else
+			{
+				stepCounter++;
+			}
+
 			break;
 		}
 	case('s'):
 	case('S'):
 		{
 			sceneManager->getActiveCamera()->moveOz(1);
+
+			if (stepCounter == 18)
+			{
+				stepCounter = 0;
+				resourceManager->PlaySound(resourceManager->LoadSound(1)->soundId);
+			}
+			else
+			{
+				stepCounter++;
+			}
+
 			break;
 		}
 	case('a'):
 	case('A'):
 	{
 		sceneManager->getActiveCamera()->moveOx(1);
+
+		if (stepCounter == 18)
+		{
+			stepCounter = 0;
+			resourceManager->PlaySound(resourceManager->LoadSound(1)->soundId);
+		}
+		else
+		{
+			stepCounter++;
+		}
+
 		break;
 	}
 
@@ -562,6 +596,17 @@ void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 	case('D'):
 	{
 		sceneManager->getActiveCamera()->moveOx(-1);
+
+		if (stepCounter == 18)
+		{
+			stepCounter = 0;
+			resourceManager->PlaySound(resourceManager->LoadSound(1)->soundId);
+		}
+		else
+		{
+			stepCounter++;
+		}
+
 		break;
 	}
 

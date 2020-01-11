@@ -17,7 +17,7 @@
 				<z>1</z>
 			</position>
 			<target>
-				<x>0</x>
+				<x>200</x>
 				<y>1</y>
 				<z>0</z>
 			</target>
@@ -30,7 +30,7 @@
 			<rotationSpeed>3</rotationSpeed>
 			<fov>45</fov>
 			<near>0.2</near>
-			<far>10000</far>
+			<far>20000</far>
 		</camera>
 		<camera id="2">
 			<position>
@@ -52,7 +52,7 @@
 			<rotationSpeed>3</rotationSpeed>
 			<fov>45</fov>
 			<near>0.2</near>
-			<far>5000</far>
+			<far>20000</far>
 		</camera>
 		<camera id="3">
 			<position>
@@ -62,7 +62,7 @@
 			</position>
 			<target>
 				<x>0</x>
-				<y>1</y>
+				<y>100</y>
 				<z>0</z>
 			</target>
 			<up>
@@ -74,7 +74,7 @@
 			<rotationSpeed>5</rotationSpeed>
 			<fov>45</fov>
 			<near>0.2</near>
-			<far>5000</far>
+			<far>20000</far>
 		</camera>
 		<camera id="4">
 			<position>
@@ -84,7 +84,7 @@
 			</position>
 			<target>
 				<x>0</x>
-				<y>1</y>
+				<y>100</y>
 				<z>0</z>
 			</target>
 			<up>
@@ -96,7 +96,7 @@
 			<rotationSpeed>5</rotationSpeed>
 			<fov>45</fov>
 			<near>0.2</near>
-			<far>5000</far>
+			<far>20000</far>
 		</camera>
 		<!-- eventual si alte cameras -->
 	</cameras>
@@ -331,9 +331,9 @@
 				<z>135.0</z>
 			</rotation>
 			<scale>
-				<x>2000.0</x>
-				<y>2000.0</y>
-				<z>2000.0</z>
+				<x>4000.0</x>
+				<y>4000.0</y>
+				<z>4000.0</z>
 			</scale>
 			<followingCamera>
 				<ox/>

@@ -110,4 +110,7 @@
 		</texture>
 		<!-- si aici se adauga toate texturile -->
 	</textures>	
+	<sounds>
+		<sound id="1">Resources/Sounds/grass-step.wav</sound>
+	</sounds>
 </resourceManager>

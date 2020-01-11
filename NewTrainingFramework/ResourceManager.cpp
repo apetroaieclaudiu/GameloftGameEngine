@@ -102,6 +102,27 @@ void ResourceManager::Init()
 
 	}
 
+	for (xml_node<> *pNode = pRoot->first_node("sounds")->first_node("sound"); pNode; pNode = pNode->next_sibling("sound"))
+	{
+		SoundResources sound;
+
+		xml_attribute<> *pAttr = pNode->first_attribute();
+		sound.id = atoi(pAttr->value());
+		string path = pNode->first_node()->value();
+		sound.path = path;
+
+		sounds.push_back(sound);
+
+	}
+
+	if (FMOD::System_Create(&fmodSystem) != FMOD_OK) {
+		printf("No sounds\n");
+	}
+	else
+	{
+		fmodSystem->init(36, FMOD_INIT_NORMAL, NULL);
+	}
+
 }
 
 ModelManager* ResourceManager::LoadModel(int id)
@@ -189,4 +210,51 @@ ShaderManager* ResourceManager::LoadShader(int id)
 	}
 
 	return NULL;
+}
+
+SoundManager* ResourceManager::LoadSound(int id)
+{
+	int i;
+
+	for (i = 0; i < loadedSounds.size(); i++)
+	{
+		if (loadedSounds[i]->sr->id == id)
+		{
+			return loadedSounds[i];
+		}
+	}
+
+	SoundManager* soundManager = new SoundManager();
+
+	for (i = 0; i < sounds.size(); i++)
+	{
+		if (id == sounds[i].id)
+		{
+			soundManager->sr = &sounds[i];
+			//sound->Load();
+			soundManager->sr->path = "../" + soundManager->sr->path;
+
+			char pathArray[50];
+
+			strcpy(pathArray, soundManager->sr->path.c_str());
+
+			fmodSystem->createSound(pathArray, FMOD_LOOP_OFF, 0, &soundManager->sound);
+			loadedSounds.push_back(soundManager);
+
+			return soundManager;
+		}
+	}
+
+	return NULL;
+}
+
+void ResourceManager::PlaySound(int id)
+{
+	for (int i = 0; i < loadedSounds.size(); i++)
+	{
+		if (loadedSounds[i]->soundId == id)
+		{
+			fmodSystem->playSound(loadedSounds[i]->sound, 0, false, 0);
+		}
+	}
 }

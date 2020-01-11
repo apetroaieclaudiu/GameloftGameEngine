@@ -81,6 +81,12 @@
     <ClCompile Include="Trajectory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SoundResources.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals.h">
@@ -147,6 +153,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Trajectory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundResources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fmod\fmod.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fmod\fmod_studio.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
