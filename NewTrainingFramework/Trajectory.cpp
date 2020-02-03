@@ -12,7 +12,7 @@ Trajectory::~Trajectory()
 {
 }
 
-void Trajectory::Update(Vector3 *position, Vector3 *rotation, float deltaTime)
+void Trajectory::Update(Vector3 *position, Vector3 *rotation, Vector3 *scale, Matrix mr, Matrix *placement, float deltaTime)
 {
 	if (trajectoryType == "linear" || trajectoryType == "line_strip" || trajectoryType == "line_loop")
 	{
@@ -68,11 +68,12 @@ void Trajectory::Update(Vector3 *position, Vector3 *rotation, float deltaTime)
 	}
 	else if (trajectoryType == "circle")
 	{
-
+		/*
 		alpha += speed * deltaTime;
 		rotation->y = -alpha - 135;
 		position->x = radius * cos(alpha) + offsetPosition.x;
 		position->z = radius * sin(alpha) + offsetPosition.z;
+		*/
 
 		/*
 		alpha += speed * deltaTime;
@@ -96,5 +97,45 @@ void Trajectory::Update(Vector3 *position, Vector3 *rotation, float deltaTime)
 		position.z = radius * sin(alpha) + offsetPosition.z;
 		position.y = radius * cos(beta) + offsetPosition.y;
 		*/
+
+		/*alpha += speed/2 * deltaTime;
+		float xAxis = 90.0f / points[1].x;
+		//beta += speed / xAxis * deltaTime * sign;
+
+		if (beta > 3.14f / xAxis) {
+			sign = -1;
+		}
+		if (beta < 0) {
+			sign = 1;
+		}
+
+		beta = 3.14f / 4;
+
+		
+
+		//rotation->y = -alpha - 135;
+		position->x = radius * sin(alpha) * cos(beta) + offsetPosition.x;
+		position->z = radius * sin(alpha) * sin(beta) + offsetPosition.z;
+		position->y = radius * cos(alpha) + offsetPosition.y;
+		*/
+
+		Matrix scenePosition, rotX, rotY, rotZ, scaleMatrix, transMatrix, radiusMatrix;
+
+		rotX.SetRotationX(rotation->x);
+		rotY.SetRotationY(rotation->y);
+		rotZ.SetRotationZ(rotation->z);
+		transMatrix.SetTranslation(position->x, position->y, position->z);
+		radiusMatrix.SetTranslation(radius, radius, radius);
+		scaleMatrix.SetScale(scale->x, scale->y, scale->z);
+
+
+		alpha += speed * deltaTime;
+
+		Matrix rotationMatrix;
+		rotationMatrix.SetRotationAngleAxis(alpha, points[1].x, -points[1].y, points[1].z);
+
+		*placement = scaleMatrix * rotX * rotY * rotZ * transMatrix * rotationMatrix * radiusMatrix  * mr ;
+
+
 	}
 }

@@ -219,11 +219,11 @@
 					<y>27</y>
 					<z>21.22</z>
 				</center>
-				<radius>300</radius>
+				<radius>100</radius>
 				<rotationPlane>
-					<x>90</x>
-					<y>0</y>
-					<z>3</z>
+					<x>10</x>
+					<y>90</y>
+					<z>40</z>
 				</rotationPlane>
 			</trajectory>
 			<lights>

@@ -17,13 +17,13 @@ public:
 	Vector3 lastPosition;
 	float radius;
 	float alpha;
-	//float beta = 0;
-	//int sign = 1;
+	float beta = 0;
+	int sign = 1;
 	Vector3 offsetPosition;
 
 	Trajectory();
 	~Trajectory();
 
 	//void Update(Vector3*, Vector3*, float);
-	void Update(Vector3*, Vector3*, float);
+	void Update(Vector3*, Vector3*, Vector3*, Matrix, Matrix*, float);
 };

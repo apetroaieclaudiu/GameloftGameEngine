@@ -23,6 +23,7 @@ public:
 	vector<TextureManager*> texture;
 	ShaderManager* shader;
 	bool depthTest;
+	bool circleTrajectory;
 	Matrix placement;
 	Trajectory* trajectory;
 	

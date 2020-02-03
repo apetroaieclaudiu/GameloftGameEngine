@@ -200,6 +200,7 @@ void SceneManager::Init()
 		object->type = type;
 		//object->trajectoryType = "none";
 		object->trajectory = NULL;
+		object->circleTrajectory = false;
 
 
 		currentNode = pNode->first_node("model");
@@ -383,6 +384,8 @@ void SceneManager::Init()
 				object->trajectory->offsetPosition = object->position;
 
 				object->trajectory->alpha = 0;
+
+				object->circleTrajectory = true;
 
 			}
 			

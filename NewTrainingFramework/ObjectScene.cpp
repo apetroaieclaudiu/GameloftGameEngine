@@ -136,7 +136,10 @@ void ObjectScene::Draw(Matrix mr, Vector3 camPos)
 		glUniformMatrix4fv(shader->scenePositionUniform, 1, GL_FALSE, (GLfloat*)scenePosition.m);
 	}
 
-	placement = scaleMatrix * rotX * rotY * rotZ * transMatrix * mr;
+	if (circleTrajectory == false)
+	{
+		placement = scaleMatrix * rotX * rotY * rotZ * transMatrix * mr;
+	}
 
 
 	if (shader->matrixUniform != -1)
@@ -192,7 +195,10 @@ void ObjectScene::Update(Vector3 cameraPosition, float deltaTime)
 	{
 		if (trajectory->iterationCount != 0)
 		{
-			trajectory->Update(&position, &rotation, deltaTime);
+			SceneManager* sceneManager = SceneManager::getInstance();
+
+			Matrix mr = sceneManager->getActiveCamera()->getViewMatrix() * sceneManager->getActiveCamera()->getPerspectiveMatrix();
+			trajectory->Update(&position, &rotation, &scale, mr, &placement, deltaTime);
 		}
 	}
 }
